@@ -1,0 +1,32 @@
+[
+    {
+        "Name": "ASP.NET Core"
+    },
+    {
+        "Name": "REST API"
+    },
+    {
+        "Name": "Entity Framework"
+    },
+    {
+        "Name": "Backend Development"
+    },
+    {
+        "Name": "C#"
+    },
+    {
+        "Name": "Clean Architecture"
+    },
+    {
+        "Name": "DDD"
+    },
+    {
+        "Name": "Microservices"
+    },
+    {
+        "Name": "Authentication"
+    },
+    {
+        "Name": "Authorization"
+    }
+]

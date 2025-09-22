@@ -1,0 +1,14 @@
+[
+    {
+        "Name": "Backend",
+        "Slug": "backend"
+    },
+    {
+        "Name": "Frontend",
+        "Slug": "frontend"
+    },
+    {
+        "Name": "Database",
+        "Slug": "database"
+    }
+]

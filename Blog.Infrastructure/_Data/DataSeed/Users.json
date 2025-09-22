@@ -1,0 +1,18 @@
+[
+  {
+    "UserName": "admin",
+    "Email": "admin@blog.com",
+    "PasswordHash": "HASHED_PASSWORD",
+    "Bio": "Super admin of the blog",
+    "CreatedAt": "2025-09-10T00:00:00Z",
+    "UpdatedAt": "2025-09-10T00:00:00Z"
+  },
+  {
+    "UserName": "john_doe",
+    "Email": "john@example.com",
+    "PasswordHash": "HASHED_PASSWORD",
+    "Bio": "Tech enthusiast and writer",
+    "CreatedAt": "2025-09-10T00:00:00Z",
+    "UpdatedAt": "2025-09-10T00:00:00Z"
+  }
+]
