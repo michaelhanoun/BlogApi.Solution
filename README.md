@@ -21,10 +21,10 @@ A **modular blogging platform** built with **ASP.NET Core 8**, designed using cl
 
 ```
 Blog.Solution/
-├─ Blog.Api/             → API Layer (Controllers, DTOs, Middleware, Swagger)
-├─ Blog.Application/     → Application Layer (Services, DTOs, Mapping)
-├─ Blog.Core/            → Domain Layer (Entities, Interfaces, Specifications)
-├─ Blog.Infrastructure/  → Infrastructure Layer (EF Core, Repositories, Identity, Redis)
+├─ Blog.Api/             → API Layer (Controllers, DTOs, Mapping, Middleware, Swagger)
+├─ Blog.Application/     → Application Layer (Services)
+├─ Blog.Core/            → Domain Layer (Entities, Identity, Interfaces, Specifications)
+├─ Blog.Infrastructure/  → Infrastructure Layer (EF Core, Repositories, Redis)
 ```
 
 
