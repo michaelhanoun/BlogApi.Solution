@@ -50,6 +50,8 @@ namespace Blog.Api.Controllers
                 return Unauthorized(new ApiResponse(401, "Invalid login"));
             _authentication.RemoveOldRefreshTokens(user);
             var authResponse = await _authentication.AddRefreshTokenToUser(user, _userManager);
+            if (authResponse is null)
+                return BadRequest(new ApiResponse(500, "Something went wrong"));
             Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, new CookieOptions
             {
                 HttpOnly = true,
@@ -73,6 +75,9 @@ namespace Blog.Api.Controllers
             if (!response.Succeeded)
                 return BadRequest(new ApiValidationErrorResponse() { Errors = response.Errors.Select(E => E.Description) });
             var authResponse = await _authentication.AddRefreshTokenToUser(applicationUser, _userManager);
+            if (authResponse is null)
+                return BadRequest(new ApiResponse(500,"Something went wrong"));
+
             Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, new CookieOptions
             {
                 HttpOnly = true,
@@ -219,6 +224,8 @@ namespace Blog.Api.Controllers
                 await _userManager.AddLoginAsync(user, info);
             }
             var authResponse = await _authentication.AddRefreshTokenToUser(user, _userManager);
+            if (authResponse is null)
+                return BadRequest(new ApiResponse(500, "Something went wrong"));
             Response.Cookies.Append("refreshToken", authResponse.RefreshToken.Token, new CookieOptions
             {
                 HttpOnly = true,

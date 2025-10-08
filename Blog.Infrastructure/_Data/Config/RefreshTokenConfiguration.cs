@@ -14,6 +14,7 @@ namespace Blog.Infrastructure._Data.Config
         public void Configure(EntityTypeBuilder<RefreshToken> builder)
         {
             builder.HasOne(R => R.ApplicationUser).WithMany(U => U.RefreshTokens).HasForeignKey(R=>R.ApplicationUserId);
+            builder.HasIndex(R=>R.Token).IsUnique();
         }
     }
 }

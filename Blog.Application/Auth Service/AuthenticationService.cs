@@ -72,13 +72,14 @@ namespace Blog.Application.Auth_Service
                 user.RefreshTokens.Remove(oldest);
             }
         }
-        public async Task<AuthResponse> RefreshAsync(RefreshToken oldToken,ApplicationUser applicationUser,UserManager<ApplicationUser>userManager)
+        public async Task<AuthResponse?> RefreshAsync(RefreshToken oldToken,ApplicationUser applicationUser,UserManager<ApplicationUser>userManager)
         {
             oldToken.Revoked = DateTime.UtcNow;
             var refreshToken = CreateRefreshToken();
             oldToken.ReplacedByToken = refreshToken.Token;
             applicationUser.RefreshTokens.Add(refreshToken);
-            await userManager.UpdateAsync(applicationUser);
+            var result = await userManager.UpdateAsync(applicationUser);
+            if(!result.Succeeded) return null;
             var newAccessToken = await CreateJwtTokenAsync(applicationUser,userManager);
             return new AuthResponse()
             {
@@ -87,11 +88,13 @@ namespace Blog.Application.Auth_Service
             };
         }
 
-        public async Task<AuthResponse> AddRefreshTokenToUser(ApplicationUser user,UserManager<ApplicationUser>_userManager)
+        public async Task<AuthResponse?> AddRefreshTokenToUser(ApplicationUser user,UserManager<ApplicationUser>_userManager)
         {
             var rToken = CreateRefreshToken();
             user.RefreshTokens.Add(rToken);
-            await _userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded) return null;
+
             var token = await CreateJwtTokenAsync(user, _userManager);
             return new () { AccessToken = token, RefreshToken = rToken };
         }
